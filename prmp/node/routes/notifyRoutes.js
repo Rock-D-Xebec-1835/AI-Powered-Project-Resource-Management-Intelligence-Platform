@@ -36,6 +36,6 @@ module.exports = (io) => {
     io.to("manager").emit("managerFeedbackAdded", data);
     res.json({ message: "Manager Feedback notification sent", data });
   });
-
+  
   return router;
 };
