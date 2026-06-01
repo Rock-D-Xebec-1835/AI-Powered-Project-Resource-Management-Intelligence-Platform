@@ -4,7 +4,6 @@ const socketIo = require("socket.io");
 const cors = require("cors");
 const morgan = require("morgan");
 const logger = require("./utils/logger"); // custom logger utility
-
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
