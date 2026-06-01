@@ -15,6 +15,7 @@ import com.prmp.entity.Project;
 import com.prmp.enums.RiskStatus;
 import com.prmp.repository.PredictionRepository;
 import com.prmp.repository.ProjectRepository;
+import com.prmp.service.NotificationService;
 import com.prmp.service.PredictionService;
 
 @Service
@@ -22,6 +23,9 @@ public class PredictionServiceImpl implements PredictionService {
 
     @Autowired
     private PredictionRepository predictionRepository;
+    
+    @Autowired
+    private NotificationService notificationService;
 
     @Autowired
     private ProjectRepository projectRepository;
@@ -63,8 +67,12 @@ public class PredictionServiceImpl implements PredictionService {
         Prediction savedPrediction =
                 predictionRepository.save(prediction);
 
-        return convertToResponseDTO(
-                savedPrediction);
+        notificationService
+                .sendPredictionGeneratedNotification(
+                        "Prediction generated for project: "
+                        + project.getName());
+
+        return convertToResponseDTO(savedPrediction);
     }
 
     @Override
