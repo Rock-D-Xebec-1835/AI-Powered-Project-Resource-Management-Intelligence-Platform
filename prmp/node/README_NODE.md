@@ -1,23 +1,45 @@
-# NodeJS Notification Service
+# Node Notification Service
 
-## Endpoints
-POST /notify/taskAssigned → emits to developer room
-POST /notify/taskStatusUpdated → emits to developer room
-POST /notify/predictionGenerated → emits to developer room
-POST /notify/managerFeedbackAdded → emits to manager room
-POST /notify/sprintDeadlineAlert → emits to admin room
+This is a simple Node.js + Socket.IO service used to send real-time notifications to the React frontend based on user roles (admin, manager, developer).
 
-## Payload Example
-{
-  "taskId": 123,
-  "assignee": "Shreenithi"
-}
+## How to Run
 
-## Spring Boot Integration
-RestTemplate restTemplate = new RestTemplate();
-restTemplate.postForObject("http://localhost:4000/notify/taskAssigned", payload, String.class);
+1. Install dependencies:
+   npm install
 
-## React Integration
-const socket = io("http://localhost:4000");
-socket.emit("joinRoom", "developer");
-socket.on("taskAssigned", (data) => { console.log(data); });
+2. Start the server:
+   node server.js
+
+The server runs on: http://localhost:4000
+
+## Roles
+
+The frontend must join one of these rooms:
+- admin
+- manager
+- developer
+
+Example:
+socket.emit("joinRoom", "admin");
+
+## Notification Endpoints
+
+POST /notify/taskAssigned  
+POST /notify/taskStatusUpdated  
+POST /notify/predictionGenerated  
+POST /notify/sprintDeadlineAlert  
+POST /notify/managerFeedbackAdded  
+
+Each endpoint sends a Socket.IO event to the correct role.
+
+## Folder Structure
+
+prmp/node/
+- server.js
+- routes/notifyRoutes.js
+- utils/logger.js
+- package.json
+
+## Purpose
+
+This service sends real-time notifications to the React dashboard based on user roles.
