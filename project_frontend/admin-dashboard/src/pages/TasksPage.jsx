@@ -80,7 +80,7 @@ function TasksPage() {
 };
 
     return (
-        <MainLayout>
+        <div style={{ padding: "30px" }}>
 
             <h1>Tasks</h1>
 
@@ -318,7 +318,7 @@ function TasksPage() {
                 ))
             )}
 
-        </MainLayout>
+        </div>
     );
 }
 

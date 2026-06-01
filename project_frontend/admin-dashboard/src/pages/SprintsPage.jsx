@@ -65,7 +65,7 @@ function SprintsPage() {
     };
 
     return (
-        <MainLayout>
+        <div style={{ padding: "30px" }}>
         <div>
 
             <h1>Sprints</h1>
@@ -254,7 +254,7 @@ function SprintsPage() {
             )}
 
         </div>
-        </MainLayout>
+        </div>
     );
 }
 

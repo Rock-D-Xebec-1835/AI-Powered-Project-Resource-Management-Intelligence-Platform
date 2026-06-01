@@ -20,7 +20,7 @@ function NotificationsPage() {
     }, []);
 
     return (
-        <MainLayout>
+        <div style={{ padding: "30px" }}>
 
             <h1>Notifications</h1>
 
@@ -68,7 +68,7 @@ function NotificationsPage() {
 
             )}
 
-        </MainLayout>
+        </div>
     );
 }
 

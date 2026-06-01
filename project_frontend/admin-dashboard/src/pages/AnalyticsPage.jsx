@@ -68,7 +68,7 @@ function AnalyticsPage() {
     }, []);
 
     return (
-        <MainLayout>
+        <div style={{ padding: "30px" }}>
 
             <h1>Analytics Dashboard</h1>
 
@@ -123,7 +123,7 @@ function AnalyticsPage() {
 
             </div>
 
-        </MainLayout>
+        </div>
     );
 }
 

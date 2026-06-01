@@ -11,6 +11,9 @@ import ResourcesPage from "./pages/ResourcesPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import NotificationsPage from "./pages/NotificationsPage";
 import SettingsPage from "./pages/SettingsPage";
+import AdminLayout from "./layouts/AdminLayout";
+import ManagerLayout from "./layouts/ManagerLayout";
+import UserLayout from "./layouts/UserLayout";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -74,29 +77,138 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
 
-        <Route path="/dashboard" element={<AdminDashboard />} />
-        <Route
-            path="/projects"
-            element={<ProjectsPage />}
-        />
-        <Route path="/sprints" element={<SprintsPage />} />
-        <Route path="/tasks" element={<TasksPage />} />
-        <Route path="/resources" element={<ResourcesPage />} />
-        <Route path="/analytics" element={<AnalyticsPage />} />
-        <Route path="/delay-risk" element={<PredictionsPage />} />
-        <Route
-          path="/notifications"
-          element={<NotificationsPage />}
-        />
-        <Route
-  path="/dashboard/user"
-  element={<UserDashboard />}
-/>
+        <Route path="/dashboard" element={<AdminLayout />}>
+
+  <Route
+    index
+    element={<AdminDashboard />}
+  />
+
+  <Route
+    path="projects"
+    element={<ProjectsPage />}
+  />
+
+  <Route
+    path="sprints"
+    element={<SprintsPage />}
+  />
+
+  <Route
+    path="tasks"
+    element={<TasksPage />}
+  />
+
+  <Route
+    path="resources"
+    element={<ResourcesPage />}
+  />
+
+  <Route
+    path="analytics"
+    element={<AnalyticsPage />}
+  />
+
+  <Route
+    path="delay-risk"
+    element={<PredictionsPage />}
+  />
+
+  <Route
+    path="notifications"
+    element={<NotificationsPage />}
+  />
+
+  <Route
+    path="settings"
+    element={<SettingsPage />}
+  />
+
+</Route>
+
 <Route
   path="/dashboard/manager"
-  element={<ManagerDashboard />}
-/>
-        <Route path="/settings" element={<SettingsPage />} />
+  element={<ManagerLayout />}
+>
+
+  <Route
+    index
+    element={<ManagerDashboard />}
+  />
+
+  <Route
+    path="projects"
+    element={<ProjectsPage />}
+  />
+
+  <Route
+    path="sprints"
+    element={<SprintsPage />}
+  />
+
+  <Route
+    path="tasks"
+    element={<TasksPage />}
+  />
+
+  <Route
+    path="resources"
+    element={<ResourcesPage />}
+  />
+
+  <Route
+    path="delay-risk"
+    element={<PredictionsPage />}
+  />
+
+  <Route
+    path="notifications"
+    element={<NotificationsPage />}
+  />
+
+  <Route
+    path="settings"
+    element={<SettingsPage />}
+  />
+
+</Route>
+
+<Route
+  path="/dashboard/user"
+  element={<UserLayout />}
+>
+
+  <Route
+    index
+    element={<UserDashboard />}
+  />
+
+  <Route
+    path="tasks"
+    element={<TasksPage />}
+  />
+
+  <Route
+    path="sprints"
+    element={<SprintsPage />}
+  />
+
+  <Route
+    path="delay-risk"
+    element={<PredictionsPage />}
+  />
+
+  <Route
+    path="notifications"
+    element={<NotificationsPage />}
+  />
+
+  <Route
+    path="settings"
+    element={<SettingsPage />}
+  />
+
+</Route>
       </Routes>
 
       <ToastContainer position="top-right" autoClose={3000} />

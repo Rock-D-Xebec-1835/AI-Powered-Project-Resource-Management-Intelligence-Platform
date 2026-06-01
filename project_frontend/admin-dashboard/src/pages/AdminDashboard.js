@@ -10,10 +10,8 @@ import Notifications from "../components/Notifications";
 function AdminDashboard() {
   return (
     <div className="dashboard-container">
-      <Sidebar />
 
       <div className="main-content">
-        <Navbar role="Admin" />
 
         <div className="dashboard-body">
           <h1>Admin Dashboard</h1>

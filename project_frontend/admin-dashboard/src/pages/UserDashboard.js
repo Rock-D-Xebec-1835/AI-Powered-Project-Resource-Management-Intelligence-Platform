@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./UserDashboard.css";
 
 import Navbar from "../components/Navbar";
@@ -6,65 +6,130 @@ import UserSidebar from "../components/UserSidebar";
 import PerformanceCard from "../components/PerformanceCard";
 import TaskTable from "../components/TaskTable";
 import Notifications from "../components/Notifications";
+import api from "../services/api";
 
 function UserDashboard() {
-  return (
-    <div className="user-dashboard-container">
-      <UserSidebar />
 
-      <div className="user-main-content">
-        <Navbar role="Developer" />
+  const [tasks, setTasks] = useState([]);
+  const [predictions, setPredictions] = useState([]);
+
+  useEffect(() => {
+
+    api.get("/tasks")
+      .then((response) => {
+        setTasks(response.data);
+      })
+      .catch(console.error);
+
+    api.get("/predictions")
+      .then((response) => {
+        setPredictions(response.data);
+      })
+      .catch(console.error);
+
+  }, []);
+
+  const completedTasks =
+    tasks.filter(
+      task => task.status === "DONE"
+    ).length;
+
+  const pendingTasks =
+    tasks.filter(
+      task => task.status !== "DONE"
+    ).length;
+
+  const latestPrediction =
+    predictions.length > 0
+      ? predictions[predictions.length - 1]
+      : null;
+
+  return (
 
         <div className="user-dashboard-body">
-          <h1>Hello Rahul 👋</h1>
-          <p>Welcome back to your workspace</p>
+
+          <h1>
+            Hello {localStorage.getItem("email")} 👋
+          </h1>
+
+          <p>
+            Welcome back to your workspace
+          </p>
 
           <div className="performance-section">
+
             <PerformanceCard
               title="Assigned Tasks"
-              value="12"
+              value={tasks.length}
             />
 
             <PerformanceCard
               title="Completed"
-              value="8"
+              value={completedTasks}
             />
 
             <PerformanceCard
               title="Pending"
-              value="4"
+              value={pendingTasks}
             />
 
             <PerformanceCard
-              title="Performance"
-              value="89%"
+              title="Predictions"
+              value={predictions.length}
             />
+
           </div>
 
           <div className="risk-section">
+
             <div className="risk-card">
+
               <h2>Delay Risk</h2>
-              <h1>Moderate Risk</h1>
+
+              <h1>
+                {
+                  latestPrediction
+                    ? latestPrediction.riskStatus
+                    : "N/A"
+                }
+              </h1>
+
               <p>
-                Project risk prediction generated
+                {
+                  latestPrediction
+                    ? latestPrediction.recommendation
+                    : "No prediction available"
+                }
               </p>
+
             </div>
 
             <div className="sprint-card">
-              <h2>Sprint Progress</h2>
-              <div className="progress-bar">
-                <div className="progress-fill"></div>
-              </div>
-              <p>70% completed</p>
+
+              <h2>Task Summary</h2>
+
+              <p>
+                Total Tasks: {tasks.length}
+              </p>
+
+              <p>
+                Completed: {completedTasks}
+              </p>
+
+              <p>
+                Pending: {pendingTasks}
+              </p>
+
             </div>
+
           </div>
 
-          <TaskTable />
+          <TaskTable tasks={tasks} />
 
           <Notifications />
+
         </div>
-      </div>
-    </div>
+
   );
 }
 

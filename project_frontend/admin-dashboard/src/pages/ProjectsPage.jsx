@@ -65,7 +65,7 @@ function ProjectsPage() {
     };
 
     return (
-        <MainLayout>
+        <div style={{ padding: "30px" }}>
 
             <h1>Projects</h1>
 
@@ -218,7 +218,7 @@ function ProjectsPage() {
                 ))
             )}
 
-        </MainLayout>
+        </div>
     );
 }
 

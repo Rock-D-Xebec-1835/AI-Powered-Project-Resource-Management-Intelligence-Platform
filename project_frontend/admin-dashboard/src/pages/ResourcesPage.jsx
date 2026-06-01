@@ -71,7 +71,7 @@ function ResourcesPage() {
     };
 
     return (
-        <MainLayout>
+        <div style={{ padding: "30px" }}>
 
             <h1>Resources</h1>
 
@@ -254,7 +254,7 @@ function ResourcesPage() {
 
             )}
 
-        </MainLayout>
+        </div>
     );
 }
 

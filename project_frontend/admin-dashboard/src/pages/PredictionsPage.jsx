@@ -20,7 +20,7 @@ function PredictionsPage() {
     }, []);
 
     return (
-        <MainLayout>
+        <div style={{ padding: "30px" }}>
 
             <h1>Delay Risk Predictions</h1>
 
@@ -68,7 +68,7 @@ function PredictionsPage() {
                 ))
             )}
 
-        </MainLayout>
+        </div>
     );
 }
 

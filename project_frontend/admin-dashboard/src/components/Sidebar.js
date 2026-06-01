@@ -14,35 +14,35 @@ function Sidebar() {
         </li>
 
         <li>
-          <Link to="/projects">Projects</Link>
+          <Link to="/dashboard/projects">Projects</Link>
         </li>
 
         <li>
-          <Link to="/sprints">Sprints</Link>
+          <Link to="/dashboard/sprints">Sprints</Link>
         </li>
 
         <li>
-          <Link to="/tasks">Tasks</Link>
+          <Link to="/dashboard/tasks">Tasks</Link>
         </li>
 
         <li>
-          <Link to="/resources">Resources</Link>
+          <Link to="/dashboard/resources">Resources</Link>
         </li>
 
         <li>
-          <Link to="/analytics">Analytics</Link>
+          <Link to="/dashboard/analytics">Analytics</Link>
         </li>
 
         <li>
-          <Link to="/delay-risk">Delay Risk</Link>
+          <Link to="/dashboard/delay-risk">Delay Risk</Link>
         </li>
 
         <li>
-          <Link to="/notifications">Notifications</Link>
+          <Link to="/dashboard/notifications">Notifications</Link>
         </li>
 
         <li>
-          <Link to="/settings">Settings</Link>
+          <Link to="/dashboard/settings">Settings</Link>
         </li>
 
       </ul>

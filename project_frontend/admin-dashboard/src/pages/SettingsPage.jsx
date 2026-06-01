@@ -10,7 +10,7 @@ function SettingsPage() {
         localStorage.getItem("role");
 
     return (
-        <MainLayout>
+        <div style={{ padding: "30px" }}>
 
             <h1>Settings</h1>
 
@@ -37,7 +37,7 @@ function SettingsPage() {
 
             </div>
 
-        </MainLayout>
+        </div>
     );
 }
 
